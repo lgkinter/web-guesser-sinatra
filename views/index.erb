@@ -1,5 +1,16 @@
 <html>
   <head>
+    <style>
+      body {
+        <% if message =~ /^Way/ %>
+          background: red;
+        <% elsif message =~ /^Too/ %>
+          background: salmon;
+        <% elsif message =~ /right/ %>
+          background: green;
+        <% end %>
+        }
+    </style>
   </head>
   <body>
     <form>
@@ -8,7 +19,7 @@
     </form>
     <p>
       <%= message %>
-      <%= "The SECRET NUMBER is #{number}" if message == "You got it right!" %>
+      <%= "The SECRET NUMBER is #{number}" if message =~ /right/ %>
     </p>
   </body>
 </html>
