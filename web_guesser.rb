@@ -26,12 +26,14 @@ def game_over?(message)
     @@remaining_guesses = 5
     return true
   else
+    @@correct_guess = settings.number
     return false
   end
 end
 
 get '/' do
   guess = params['guess'].to_i
+  cheat = params['cheat']
   if params['guess']
     @@remaining_guesses -= 1
     message = check_guess(guess)
@@ -39,5 +41,5 @@ get '/' do
     message = "Welcome! We've selected a random secret number from 0 to 100. What's your guess?"
   end
   game_over = game_over?(message)
-  erb :index, :locals => {:number => @@correct_guess, :message => message, :game_over => game_over, :guess_count => @@remaining_guesses}
+  erb :index, :locals => {:number => @@correct_guess, :message => message, :game_over => game_over, :cheat_mode => cheat}
 end

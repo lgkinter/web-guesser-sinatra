@@ -19,11 +19,10 @@
     </form>
     <p>
       <%= message %>
-      <%= "The SECRET NUMBER is #{number}." if message =~ /right/ %>
+      <%= "The SECRET NUMBER is #{number}." if message =~ /right/ || cheat_mode %>
       <%= "<br><br>Game over. You ran out of guesses. The SECRET NUMBER was #{number}." if game_over && message !~ /right/ %>
       <br><br>
       <%= "Play again by guessing the new secret number." if message =~ /right/ || game_over %>
-      <%= guess_count %>
     </p>
   </body>
 </html>
